@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="app/src/main/res/layout/activity_deadline.xml" value="0.1897644927536232" />
+        <entry key="app/src/main/res/layout/activity_destress.xml" value="0.1897644927536232" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.2971014492753623" />
       </map>

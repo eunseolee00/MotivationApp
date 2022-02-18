@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MotivationApp">
         <activity
+            android:name=".DestressActivity"
+            android:exported="false" />
+        <activity
+            android:name=".DeadlineActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
