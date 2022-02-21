@@ -21,4 +21,10 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun study(view: View){
+        val intent = Intent(this, StudyActivity::class.java)
+        startActivity(intent)
+    }
+
+
 }//MenuActivity

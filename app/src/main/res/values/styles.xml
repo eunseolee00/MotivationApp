@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="NumberPickerText">
+        <item name="android:textSize">80sp</item>
+        <item name="colorControlNormal">#00FF0000</item>
+        <item name="fontFamily">@font/abril_fatface</item>
+    </style>
+
+    <style name="NumberPickerText2">
+        <item name="android:textSize">60sp</item>
+        <item name="colorControlNormal">#00FF0000</item>
+        <item name="fontFamily">@font/abril_fatface</item>
+    </style>
+</resources>

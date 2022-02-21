@@ -35,6 +35,7 @@
         android:fontFamily="serif"
         android:text="Study and Meditate"
         android:textSize="20sp"
+        android:onClick="study"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toStartOf="@+id/button11"
         app:layout_constraintHorizontal_bias="0.5"
