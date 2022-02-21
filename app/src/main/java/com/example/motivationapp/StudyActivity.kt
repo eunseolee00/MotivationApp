@@ -18,8 +18,14 @@ class StudyActivity : AppCompatActivity() {
     lateinit var countDownTimer: CountDownTimer
     lateinit var meditationTimer: CountDownTimer
     lateinit var button: Button
+
+    lateinit var medPicker: NumberPicker
+    lateinit var medSeconds : TextView
+
     var howLong = 0
+    var medLong = 0
     var counterActive = false
+    var medActive = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,10 +34,35 @@ class StudyActivity : AppCompatActivity() {
         numberPicker = findViewById(R.id.numberPicker)
         seconds = findViewById(R.id.seconds)
         button = findViewById(R.id.start)
+        medPicker = findViewById(R.id.numberPicker2)
+        medSeconds = findViewById(R.id.seconds2)
 
         numberPicker.maxValue = 60
         numberPicker.minValue = 0
         numberPicker.value = 25
+
+        medPicker.maxValue = 20
+        medPicker.minValue = 0
+        medPicker.value = 10
+    }
+
+    fun updateMedMin(minLeft : Int){
+        if(minLeft >= 0){
+            medPicker.value = minLeft
+        }
+    }
+
+    fun updateMedSeconds(secondsLeft : Int){
+        var sec = secondsLeft - (secondsLeft / 60) * 60
+        if(sec >= 0){
+            if(sec > 9){
+                medSeconds.text = ( sec ).toString()
+            }else{
+                medSeconds.text = "0$sec"
+            }
+
+        }
+
     }
 
     fun updateMin(minLeft : Int){
@@ -67,6 +98,22 @@ class StudyActivity : AppCompatActivity() {
 
                 override fun onFinish() {
 
+                    //counterActive = false
+                    medActive = true
+                    medLong = medPicker.value * 60 * 1000 + 100
+                    meditationTimer = object : CountDownTimer(medLong.toLong(),1000){
+                        override fun onTick(p0: Long) {
+                            updateMedMin((p0/60000).toInt())
+                            updateMedSeconds((p0/1000).toInt())
+                        }
+
+                        override fun onFinish() {
+                            TODO("Not yet implemented")
+                        }
+
+                    }//meditationTimer = object
+                    meditationTimer.start()
+
                 }//onFinish
             }//countDownTimer = object
             countDownTimer.start()
@@ -80,12 +127,24 @@ class StudyActivity : AppCompatActivity() {
                 .setPositiveButton("Yes", DialogInterface.OnClickListener()
                 {
                         dialogInterface: DialogInterface?, i: Int ->
-                    countDownTimer.cancel()
+
+                    if(counterActive){
+                        countDownTimer.cancel()
+                    }
+
+                    if(medActive){
+                        meditationTimer.cancel()
+                    }
+
                     counterActive = false
+                    medActive = false
                     button.text = "START"
 
                     numberPicker.value = 25
                     seconds.text = "00"
+
+                    medPicker.value = 5
+                    medSeconds.text = "00"
 
                 })
                 .setNegativeButton("NO", null)

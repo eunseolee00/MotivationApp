@@ -8,10 +8,10 @@
 
     <NumberPicker
         android:id="@+id/numberPicker"
-        android:layout_width="156dp"
-        android:layout_height="204dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="104dp"
+        android:layout_width="153dp"
+        android:layout_height="244dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="80dp"
         android:theme="@style/NumberPickerText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -110,7 +110,7 @@
         android:layout_marginStart="44dp"
         android:layout_marginTop="348dp"
         android:fontFamily="serif"
-        android:text="... and meditate for ..."
+        android:text="... and then meditate for ..."
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
