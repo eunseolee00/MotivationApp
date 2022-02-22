@@ -1,17 +1,22 @@
 package com.example.motivationapp
 
+import android.app.DatePickerDialog
 import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.EditText
+import java.text.SimpleDateFormat
+import java.util.*
 
 class editorDeadlineActivity : AppCompatActivity() {
     lateinit var date : EditText
     lateinit var subject : EditText
     lateinit var assignment : EditText
     var loc = -1
+
+    val myCalendar: Calendar = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +28,31 @@ class editorDeadlineActivity : AppCompatActivity() {
         date.setText( dueDates[loc] )
         subject.setText( subjects[loc] )
         assignment.setText( assignments[loc] )
+
+        val cdate =
+            DatePickerDialog.OnDateSetListener { view, year, month, day ->
+                myCalendar[Calendar.YEAR] = year
+                myCalendar[Calendar.MONTH] = month
+                myCalendar[Calendar.DAY_OF_MONTH] = day
+                updateLabel()
+            }
+        date.setOnClickListener(View.OnClickListener {
+            DatePickerDialog(
+                this@editorDeadlineActivity,
+                cdate,
+                myCalendar[Calendar.YEAR],
+                myCalendar[Calendar.MONTH],
+                myCalendar[Calendar.DAY_OF_MONTH]
+            ).show()
+        })
+
     }//onCreate
+
+    private fun updateLabel() {
+        val myFormat = "MM/dd/yy"
+        val dateFormat = SimpleDateFormat(myFormat, Locale.US)
+        date.setText(dateFormat.format(myCalendar.time))
+    }
 
     fun saveData(view : View) {
         dueDates[loc] = date.text.toString()

@@ -23,6 +23,12 @@
             android:name=".DeadlineActivity"
             android:exported="false" />
         <activity
+            android:name=".addDeadlineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".editorDeadlineActivity"
+            android:exported="false" />
+        <activity
             android:name=".MenuActivity"
             android:exported="false" />
         <activity
