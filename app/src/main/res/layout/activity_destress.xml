@@ -4,6 +4,62 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E30000"
     tools:context=".DestressActivity">
 
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="292dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="26dp"
+        android:fontFamily="serif"
+        android:text="Punch Me!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="60sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="273dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="serif"
+        android:text="DESTRESS!"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="290dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="19dp"
+        android:backgroundTint="#FFFFFF"
+        android:fontFamily="serif"
+        android:onClick="punch"
+        android:text="PUNCH"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dumpling" />
+
+    <ImageView
+        android:id="@+id/dumpling"
+        android:layout_width="249dp"
+        android:layout_height="312dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8"
+        app:srcCompat="@drawable/dumpling" />
 </androidx.constraintlayout.widget.ConstraintLayout>
