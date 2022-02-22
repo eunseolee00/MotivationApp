@@ -3,6 +3,7 @@ package com.example.motivationapp
 import android.app.ActionBar
 import android.app.Dialog
 import android.content.Context
+import android.content.DialogInterface
 import android.content.SharedPreferences
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
@@ -10,6 +11,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.*
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -65,22 +67,17 @@ class ScheduleActivity : AppCompatActivity() {
         thur = addClass.findViewById(R.id.checkThur)
         fri = addClass.findViewById(R.id.checkFri)
 
-
         monClass = findViewById(R.id.MonClasses)
         tuesClass = findViewById(R.id.TuesClasses)
         wedClass = findViewById(R.id.WedClasses)
         thurClass = findViewById(R.id.ThurClasses)
         friClass = findViewById(R.id.FriClasses)
 
-
         arrayOfDays.add(monClass)
         arrayOfDays.add(tuesClass)
         arrayOfDays.add(wedClass)
         arrayOfDays.add(thurClass)
         arrayOfDays.add(friClass)
-
-
-
 
         sthPicker = addClass.findViewById(R.id.startTimeHourPicker)
         sthPicker.maxValue = 19
@@ -106,46 +103,18 @@ class ScheduleActivity : AppCompatActivity() {
         exit = addClass.findViewById(R.id.exit)
         exit.setOnClickListener {
             addClass.dismiss()
-        }
-
-
+        }//exit.setOnClickListener
 
         layout = findViewById(R.id.layout)
         layout.setOnClickListener{
             addClass.show()
-        }
+        }//layout.setOnClickListener
 
         addButton.setOnClickListener{
             addClass()
-        }
-
-
-        //test
-        val lecture = TextView(this )
-
-        lecture.text = "testCourse\n10:00-11:00"
-        lecture.height = 200
-        lecture.setBackgroundColor((Color.GRAY))
-
-        //val p = lecture.layoutParams as ViewGroup.MarginLayoutParams
-        //p.setMargins(0,50,0,0)
-
-
-        //val p = lecture.layoutParams as RelativeLayout.LayoutParams
-        //p.topMargin = 50
-        //lecture.layoutParams = p
-        monClass.addView(lecture)
-
-        lecture.setMargins(0,20,0,0)
-
+        }//addButton.setOnClickListener
 
         retrieveData()
-        Toast.makeText(applicationContext,courseList.size.toString(),Toast.LENGTH_LONG).show()
-        Toast.makeText(applicationContext,courseList[0].name.toString(),Toast.LENGTH_LONG).show()
-
-
-
-
 
     }//onCreate
 
@@ -158,8 +127,8 @@ class ScheduleActivity : AppCompatActivity() {
     ) {
         layoutParams = (layoutParams as ViewGroup.MarginLayoutParams).apply {
             setMargins(left, top, right, bottom)
-        }
-    }
+        }//layoutParams = (layoutParams
+    }//TextView.setMargins
 
 
     fun addClass(){
@@ -199,7 +168,6 @@ class ScheduleActivity : AppCompatActivity() {
 
             courseList.add(newCourse)
             saveData()
-            Toast.makeText(applicationContext,(courseList.size).toString(),Toast.LENGTH_LONG).show()
         }
 
 
@@ -216,7 +184,7 @@ class ScheduleActivity : AppCompatActivity() {
 
         if (arr.isNotEmpty()) {
             courseList = arr
-        }
+        }//if (arr.isNotEmpty())
 
 
         /*
@@ -229,7 +197,7 @@ class ScheduleActivity : AppCompatActivity() {
         //Toast.makeText(applicationContext,(arr[0].name).toString(),Toast.LENGTH_LONG).show()
 
 
-        for (c: course in arr) {
+        for (c: course in courseList) {
 
             for (i in 0..4) {
                 if (c.week[i]) {
@@ -245,8 +213,27 @@ class ScheduleActivity : AppCompatActivity() {
                     lecture.text = c.name + "\n" + c.startHour.toString() + ":" +
                             stm + "-" +
                             c.endHour.toString() + ":" + edm
-                    lecture.setBackgroundColor((Color.GRAY))
+
+                    lecture.textSize = 12f
+
+                    lecture.setBackgroundColor((Color.LTGRAY))
                     arrayOfDays[i].addView(lecture)
+
+                    lecture.setOnLongClickListener{
+                        AlertDialog.Builder(this)
+                            .setIcon(android.R.drawable.ic_dialog_alert)
+                            . setTitle("Delete course")
+                            .setMessage("Do you really want to delete this course?")
+                            .setPositiveButton("Yes", DialogInterface.OnClickListener()
+                            {
+                                    dialogInterface: DialogInterface?, i: Int ->
+                                courseList.remove(c)
+                                saveData()
+                            })
+                            .setNegativeButton("NO", null)
+                            .show()
+                        return@setOnLongClickListener true
+                    }//lecture.setOnLongClickListener
                     //test
 
                     //val p = lecture.layoutParams as ViewGroup.MarginLayoutParams
@@ -269,12 +256,12 @@ class ScheduleActivity : AppCompatActivity() {
         }//for(c : course in arr)
     }//retrieveData()
 
-            fun saveData() {
+    fun saveData() {
 
-                val gson = Gson()
-                val json = gson.toJson(courseList)
-                sharedPreferences.edit().putString("courseList", json).commit()
-            }//saveData()
+        val gson = Gson()
+        val json = gson.toJson(courseList)
+        sharedPreferences.edit().putString("courseList", json).commit()
+    }//saveData()
 
 
 
