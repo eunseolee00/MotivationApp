@@ -22,14 +22,14 @@ class DestressActivity : AppCompatActivity() {
 
     fun punch (view : View) {
 
-        dumpling.animate().translationYBy(-2000f).rotation(720f).setDuration(2000)
+        dumpling.animate().translationYBy(-2000f).rotationBy(720f).setDuration(2000)
 
         val handler = Handler()
         handler.postDelayed(Runnable {
-            dumpling.animate().translationX(0f).translationY(0f).rotation(720f)
-        }, 2500)
+            dumpling.animate().translationX(0f).translationY(0f)
+        }, 1500)
 
-        dumpling.clearAnimation()
+//        dumpling.clearAnimation()
     }//punch
 
 

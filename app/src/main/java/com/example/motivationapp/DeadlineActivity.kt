@@ -120,6 +120,11 @@ class DeadlineActivity : AppCompatActivity() {
             startActivity(intent)
             return true
         }
+        else if (item.itemId == R.id.goHome) {
+            val intent = Intent(applicationContext, MenuActivity::class.java)
+            startActivity(intent)
+            return true
+        }
         return false
     }//onOptionsItemSelected
 

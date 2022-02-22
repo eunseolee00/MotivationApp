@@ -11,6 +11,7 @@ import android.widget.EditText
 import java.util.*
 import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
+import android.view.inputmethod.InputMethodManager
 
 import android.widget.DatePicker
 import java.text.SimpleDateFormat
@@ -21,6 +22,15 @@ class addDeadlineActivity : AppCompatActivity() {
     lateinit var subject : EditText
     lateinit var assignment : EditText
     val myCalendar: Calendar = Calendar.getInstance()
+    var flag = true
+
+//    val cdate =
+//        OnDateSetListener { view, year, month, day ->
+//            myCalendar[Calendar.YEAR] = year
+//            myCalendar[Calendar.MONTH] = month
+//            myCalendar[Calendar.DAY_OF_MONTH] = day
+//            updateLabel()
+//        }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +46,7 @@ class addDeadlineActivity : AppCompatActivity() {
                 myCalendar[Calendar.MONTH] = month
                 myCalendar[Calendar.DAY_OF_MONTH] = day
                 updateLabel()
-            }
+            }//onDateSetListener
         date.setOnClickListener(View.OnClickListener {
             DatePickerDialog(
                 this@addDeadlineActivity,
@@ -45,9 +55,19 @@ class addDeadlineActivity : AppCompatActivity() {
                 myCalendar[Calendar.MONTH],
                 myCalendar[Calendar.DAY_OF_MONTH]
             ).show()
-        })
+        })//setOnClickListener
 
     }//onCreate
+
+//    fun dateClick(view: View) {
+//        DatePickerDialog(
+//            this@addDeadlineActivity,
+//            cdate,
+//            myCalendar[Calendar.YEAR],
+//            myCalendar[Calendar.MONTH],
+//            myCalendar[Calendar.DAY_OF_MONTH]
+//        ).show()
+//    }
 
     private fun updateLabel() {
         val myFormat = "MM/dd/yy"
@@ -73,5 +93,17 @@ class addDeadlineActivity : AppCompatActivity() {
         startActivity(intent)
 
     }//saveData
+
+    fun hide (view : View) {
+
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        if (flag) {
+            imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+        }
+        else {
+            imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0)
+        }
+        flag = !flag
+    }//hide
 
 }//addDeadlineActivity

@@ -6,6 +6,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import java.text.SimpleDateFormat
 import java.util.*
@@ -17,6 +18,7 @@ class editorDeadlineActivity : AppCompatActivity() {
     var loc = -1
 
     val myCalendar: Calendar = Calendar.getInstance()
+    var flag = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -71,5 +73,17 @@ class editorDeadlineActivity : AppCompatActivity() {
         startActivity(intent)
 
     }//saveData
+
+    fun hide (view : View) {
+
+        val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+        if (flag) {
+            imm.toggleSoftInput(InputMethodManager.HIDE_IMPLICIT_ONLY, 0)
+        }
+        else {
+            imm.toggleSoftInput(InputMethodManager.SHOW_IMPLICIT, 0)
+        }
+        flag = !flag
+    }//hide
 
 }//editorDeadlineActivity
