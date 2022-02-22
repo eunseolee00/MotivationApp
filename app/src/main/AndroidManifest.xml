@@ -11,7 +11,8 @@
         android:theme="@style/Theme.MotivationApp">
         <activity
             android:name=".ScheduleActivity"
-            android:exported="false" />
+            android:exported="false"
+            />
         <activity
             android:name=".StudyActivity"
             android:exported="false" />

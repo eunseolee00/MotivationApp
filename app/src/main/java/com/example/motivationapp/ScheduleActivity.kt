@@ -1,11 +1,16 @@
 package com.example.motivationapp
 
+import android.app.ActionBar
 import android.app.Dialog
+import android.content.Context
 import android.content.SharedPreferences
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.*
 import com.google.gson.Gson
 
 class ScheduleActivity : AppCompatActivity() {
@@ -22,13 +27,13 @@ class ScheduleActivity : AppCompatActivity() {
     lateinit var thur : CheckBox
     lateinit var fri : CheckBox
 
-    lateinit var monClass : androidx.constraintlayout.widget.ConstraintLayout
-    lateinit var tuesClass : androidx.constraintlayout.widget.ConstraintLayout
-    lateinit var wedClass : androidx.constraintlayout.widget.ConstraintLayout
-    lateinit var thurClass : androidx.constraintlayout.widget.ConstraintLayout
-    lateinit var friClass : androidx.constraintlayout.widget.ConstraintLayout
+    lateinit var monClass : RelativeLayout
+    lateinit var tuesClass : RelativeLayout
+    lateinit var wedClass : RelativeLayout
+    lateinit var thurClass : RelativeLayout
+    lateinit var friClass : RelativeLayout
 
-    lateinit var arrayOfDays : ArrayList<androidx.constraintlayout.widget.ConstraintLayout>
+    lateinit var arrayOfDays : ArrayList<RelativeLayout>
 
     lateinit var sharedPreferences : SharedPreferences
 
@@ -46,7 +51,9 @@ class ScheduleActivity : AppCompatActivity() {
         addClass.setContentView(R.layout.add_class_popup)
 
         courseList = ArrayList()
-        sharedPreferences = getSharedPreferences("courseSchedule", MODE_PRIVATE)
+        arrayOfDays = ArrayList()
+
+        sharedPreferences = applicationContext.getSharedPreferences("courseSchedule", Context.MODE_PRIVATE)
 
         exit = addClass.findViewById(R.id.exit)
         addButton = addClass.findViewById(R.id.addClassButton)
@@ -57,17 +64,21 @@ class ScheduleActivity : AppCompatActivity() {
         thur = addClass.findViewById(R.id.checkThur)
         fri = addClass.findViewById(R.id.checkFri)
 
+
         monClass = findViewById(R.id.MonClasses)
         tuesClass = findViewById(R.id.TuesClasses)
         wedClass = findViewById(R.id.WedClasses)
         thurClass = findViewById(R.id.ThurClasses)
         friClass = findViewById(R.id.FriClasses)
 
+
         arrayOfDays.add(monClass)
         arrayOfDays.add(tuesClass)
         arrayOfDays.add(wedClass)
         arrayOfDays.add(thurClass)
         arrayOfDays.add(friClass)
+
+
 
 
         sthPicker = addClass.findViewById(R.id.startTimeHourPicker)
@@ -108,9 +119,42 @@ class ScheduleActivity : AppCompatActivity() {
         }
 
 
+        //test
+        val lecture = TextView(this )
+
+        lecture.text = "testCourse\n10:00-11:00"
+        lecture.height = 200
+        lecture.setBackgroundColor((Color.GRAY))
+
+        //val p = lecture.layoutParams as ViewGroup.MarginLayoutParams
+        //p.setMargins(0,50,0,0)
+
+
+        //val p = lecture.layoutParams as RelativeLayout.LayoutParams
+        //p.topMargin = 50
+        //lecture.layoutParams = p
+        monClass.addView(lecture)
+
+        lecture.setMargins(0,20,0,0)
+
+        retrieveData()
+
+
 
 
     }//onCreate
+
+    //https://stackoverflow.com/questions/45411634/set-runtime-margin-to-any-view-using-kotlin
+    fun TextView.setMargins(
+        left: Int = this.marginLeft,
+        top: Int = this.marginTop,
+        right: Int = this.marginRight,
+        bottom: Int = this.marginBottom,
+    ) {
+        layoutParams = (layoutParams as ViewGroup.MarginLayoutParams).apply {
+            setMargins(left, top, right, bottom)
+        }
+    }
 
 
     fun addClass(){
@@ -157,24 +201,68 @@ class ScheduleActivity : AppCompatActivity() {
     }//addClass
 
     fun retrieveData(){
-        var gson = Gson()
-        var json = sharedPreferences.getString("courseList","")
-        var arr = gson.fromJson(json,ArrayList::class.java) as ArrayList<course>
+
+        sharedPreferences = applicationContext.getSharedPreferences("courseSchedule", Context.MODE_PRIVATE)
+        val gson = Gson()
+        val json = sharedPreferences.getString("courseList","")
+        val arr = gson.fromJson(json,Array<course>::class.java)
+
+
+        /*
+        arr = ObjectSerializer.
+            deserialize(
+                    sharedPreferences.getString("courseList",ObjectSerializer.serialize(ArrayList<course>()))
+                )as ArrayList<course>
+
+         */
+        Toast.makeText(applicationContext,(arr[0].name).toString(),Toast.LENGTH_LONG).show()
+
+        /*
         for(c : course in arr){
+
             for (i in 0..4){
                 if (c.week[i]){
                     val lecture = TextView(this )
-                    lecture.text = c.name
+                    var stm = String()
+                    var edm = String()
+                    if (c.startMin < 10){
+                        stm = "0" + c.startMin
+                    }
+                    if(c.endMin<10){
+                        edm = "0" + c.endMin
+                    }
+                    lecture.text = c.name + "\n" + c.startHour.toString() + ":" +
+                            stm + "-" +
+                    c.endHour.toString() + ":" + edm
+                    lecture.setBackgroundColor((Color.GRAY))
                     arrayOfDays[i].addView(lecture)
+                    //test
+
+                    //val p = lecture.layoutParams as ViewGroup.MarginLayoutParams
+                    //p.setMargins(0,50,0,0)
+
+
+                    //val p = lecture.layoutParams as RelativeLayout.LayoutParams
+                    //p.topMargin = 50
+                    //lecture.layoutParams = p
+
+                    val marginToTop = 20 + ((c.startHour - 8)*60 + (c.startMin))/60 * 130
+                    var timeSpanInMin = (c.endHour - c.startHour) * 60 + c.endMin - c.startMin
+
+                    lecture.setMargins(0,marginToTop,0,0)
+                    lecture.height = timeSpanInMin/60 * 130
                 }
             }
-        }
+
+         */
+
+       // }
     }
 
     fun saveData(){
 
-        var gson = Gson()
-        var json = gson.toJson(courseList)
+        val gson = Gson()
+        val json = gson.toJson(courseList)
         sharedPreferences.edit().putString("courseList",json).apply()
     }
 
