@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@id/layout"
+    tools:context=".ScheduleActivity">
+
+    <LinearLayout
+        android:layout_width="354dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Mon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Mon."
+            android:fontFamily="serif"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/Tues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Tues."
+            android:fontFamily="serif"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/Wed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Wed."
+            android:fontFamily="serif"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/Thur"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Thur."
+            android:fontFamily="serif"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/Fri"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Fri."
+            android:fontFamily="serif"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="353dp"
+        android:layout_height="628dp"
+        android:layout_marginTop="96dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/MonClasses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Mon."
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="24sp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="150dp"
+                android:background="@color/white"
+                android:fontFamily="serif"
+                android:text="COSC 253\n17:00-18:15"
+                android:textSize="12dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="0dp"></TextView>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/TuesClasses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Mon."
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="24sp">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/WedClasses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Mon."
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="24sp">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/ThurClasses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Mon."
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="24sp">
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/FriClasses"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Mon."
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="24sp">
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="48dp"
+        android:layout_height="628dp"
+        android:layout_marginTop="96dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/time8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="8"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="serif"
+            android:text="9"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="10"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="11"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="12"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="1"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="2"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time15"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="3"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="4"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time17"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="5"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="6"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time19"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="7"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/time20"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+
+            android:fontFamily="serif"
+            android:text="8"
+            android:textAlignment="center"
+            android:textColor="#939393"
+            android:textSize="18sp">
+
+        </TextView>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
