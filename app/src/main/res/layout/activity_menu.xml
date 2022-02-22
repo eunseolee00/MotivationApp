@@ -52,6 +52,7 @@
         android:fontFamily="serif"
         android:text="Schedule"
         android:textSize="20sp"
+        android:onClick="schedule"
         app:layout_constraintBottom_toTopOf="@+id/button11"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

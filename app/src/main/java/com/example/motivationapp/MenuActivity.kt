@@ -26,5 +26,10 @@ class MenuActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
+    fun schedule(view: View){
+        val intent = Intent(this, ScheduleActivity::class.java)
+        startActivity(intent)
+    }
+
 
 }//MenuActivity

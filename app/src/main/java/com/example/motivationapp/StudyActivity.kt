@@ -108,9 +108,17 @@ class StudyActivity : AppCompatActivity() {
                         }
 
                         override fun onFinish() {
-                            TODO("Not yet implemented")
-                        }
+                            counterActive = false
+                            medActive = false
+                            button.text = "START"
 
+                            numberPicker.value = 25
+                            seconds.text = "00"
+
+                            medPicker.value = 5
+                            medSeconds.text = "00"
+
+                        }
                     }//meditationTimer = object
                     meditationTimer.start()
 
