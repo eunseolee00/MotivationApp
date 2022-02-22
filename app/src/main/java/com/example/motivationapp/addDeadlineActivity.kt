@@ -15,6 +15,7 @@ class addDeadlineActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_deadline)
+
         date = findViewById(R.id.date)
         subject = findViewById(R.id.subject)
         assignment = findViewById(R.id.assignment)
@@ -34,7 +35,7 @@ class addDeadlineActivity : AppCompatActivity() {
         sharedPreferences.edit().putString("AllSubjects", ObjectSerializer.serialize(subjects)).apply()
         sharedPreferences.edit().putString("AllAssignments", ObjectSerializer.serialize(assignments)).apply()
 
-        val intent = Intent(applicationContext, MainActivity::class.java)
+        val intent = Intent(applicationContext, DeadlineActivity::class.java)
         startActivity(intent)
 
     }//saveData

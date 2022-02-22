@@ -12,6 +12,7 @@ import android.view.MenuItem
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.ListView
+import java.util.ArrayList
 
 lateinit var arrayAdapter: ArrayAdapter<*>
 var dueDates = ArrayList<String>()
@@ -27,7 +28,6 @@ class DeadlineActivity : AppCompatActivity() {
         setContentView(R.layout.activity_deadline)
 
         listView = findViewById(R.id.listView)
-
         getData()
 
         arrayAdapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, dueDates)
@@ -53,21 +53,15 @@ class DeadlineActivity : AppCompatActivity() {
                         assignments.removeAt(itemDelete)
                         arrayAdapter.notifyDataSetChanged()
                         sharedPreferences.edit()
-                            .putString("AllDueDates", ObjectSerializer.serialize(dueDates))
-                            .apply()
+                            .putString("AllDueDates", ObjectSerializer.serialize(dueDates)).apply()
                         sharedPreferences.edit()
-                            .putString("AllSubjects", ObjectSerializer.serialize(subjects))
-                            .apply()
-                        sharedPreferences.edit().putString(
-                            "AllAssignments",
-                            ObjectSerializer.serialize(assignments)
-                        )
-                            .apply()
+                            .putString("AllSubjects", ObjectSerializer.serialize(subjects)).apply()
+                        sharedPreferences.edit()
+                            .putString("AllAssignments", ObjectSerializer.serialize(assignments)).apply()
 
-                    }
+                    }//setPositiveButton
                     .setNegativeButton("No", null)
                     .show()
-
                 return@OnItemLongClickListener true
             }//OnItemCLongClickListener
     }//onCreate
@@ -77,37 +71,37 @@ class DeadlineActivity : AppCompatActivity() {
             "com.example.motivationapp", Context.MODE_PRIVATE
         )
 
-        var newDeadlines = java.util.ArrayList<String?>()
+        var newDeadlines = ArrayList<String?>()
         newDeadlines = ObjectSerializer
             .deserialize(
                 sharedPreferences
                     .getString("AllDueDates", ObjectSerializer.serialize(java.util.ArrayList<String>()))
-            ) as java.util.ArrayList<String?>
+            ) as ArrayList<String?>
 
         if (newDeadlines.size != 0) {
-            dueDates = java.util.ArrayList(newDeadlines)
+            dueDates = ArrayList(newDeadlines)
         }//if
 
-        newDeadlines = java.util.ArrayList<String?>()
+        newDeadlines = ArrayList<String?>()
         newDeadlines = ObjectSerializer
             .deserialize(
                 sharedPreferences
                     .getString("AllSubjects", ObjectSerializer.serialize(java.util.ArrayList<String>()))
-            ) as java.util.ArrayList<String?>
+            ) as ArrayList<String?>
 
         if (newDeadlines.size != 0) {
-            subjects = java.util.ArrayList(newDeadlines)
+            subjects = ArrayList(newDeadlines)
         }//if
 
-        newDeadlines = java.util.ArrayList<String?>()
+        newDeadlines = ArrayList<String?>()
         newDeadlines = ObjectSerializer
             .deserialize(
                 sharedPreferences
                     .getString("AllAssignments", ObjectSerializer.serialize(java.util.ArrayList<String>()))
-            ) as java.util.ArrayList<String?>
+            ) as ArrayList<String?>
 
         if (newDeadlines.size != 0) {
-            assignments = java.util.ArrayList(newDeadlines)
+            assignments = ArrayList(newDeadlines)
         }//if
 
     }//getData
