@@ -3,17 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.13125" />
-        <entry key="app/src/main/res/layout/activity_add_deadline.xml" value="0.25" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.381025641025641" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.381025641025641" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/font/abril_fatface.xml" value="0.39487179487179486" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/layout/activity_add_deadline.xml" value="0.16197916666666667" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/layout/activity_deadline.xml" value="0.20153985507246377" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/layout/activity_destress.xml" value="0.20153985507246377" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/layout/activity_editor_deadline.xml" value="0.16197916666666667" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/layout/activity_main.xml" value="0.20153985507246377" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/layout/activity_menu.xml" value="0.2210144927536232" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/layout/activity_schedule.xml" value="0.2866847826086957" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/layout/activity_study.xml" value="0.33" />
+        <entry key="..\:/Academics/COSC253/MotivationApp/app/src/main/res/layout/add_class_popup.xml" value="0.2957427536231884" />
         <entry key="app/src/main/res/layout/activity_deadline.xml" value="0.1897644927536232" />
-        <entry key="app/src/main/res/layout/activity_destress.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_editor_deadline.xml" value="0.2427536231884058" />
+        <entry key="app/src/main/res/layout/activity_destress.xml" value="0.1897644927536232" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_menu.xml" value="0.2971014492753623" />
-        <entry key="app/src/main/res/layout/activity_schedule.xml" value="0.2109375" />
-        <entry key="app/src/main/res/layout/activity_study.xml" value="0.2427536231884058" />
-        <entry key="app/src/main/res/layout/add_class_popup.xml" value="0.2109375" />
-        <entry key="app/src/main/res/menu/add.xml" value="0.335" />
       </map>
     </option>
   </component>

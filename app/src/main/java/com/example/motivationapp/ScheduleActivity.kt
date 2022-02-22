@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.view.*
 import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 
 class ScheduleActivity : AppCompatActivity() {
 
@@ -137,7 +138,11 @@ class ScheduleActivity : AppCompatActivity() {
 
         lecture.setMargins(0,20,0,0)
 
+
         retrieveData()
+        Toast.makeText(applicationContext,courseList.size.toString(),Toast.LENGTH_LONG).show()
+        Toast.makeText(applicationContext,courseList[0].name.toString(),Toast.LENGTH_LONG).show()
+
 
 
 
@@ -200,12 +205,18 @@ class ScheduleActivity : AppCompatActivity() {
 
     }//addClass
 
-    fun retrieveData(){
+    fun retrieveData() {
 
-        sharedPreferences = applicationContext.getSharedPreferences("courseSchedule", Context.MODE_PRIVATE)
+        sharedPreferences =
+            applicationContext.getSharedPreferences("courseSchedule", Context.MODE_PRIVATE)
         val gson = Gson()
-        val json = sharedPreferences.getString("courseList","")
-        val arr = gson.fromJson(json,Array<course>::class.java)
+        val json = sharedPreferences.getString("courseList", "")
+        val tptk = object : TypeToken<ArrayList<course>>() {}
+        val arr = gson.fromJson<ArrayList<course>>(json, tptk.type)
+
+        if (arr.isNotEmpty()) {
+            courseList = arr
+        }
 
 
         /*
@@ -215,25 +226,25 @@ class ScheduleActivity : AppCompatActivity() {
                 )as ArrayList<course>
 
          */
-        Toast.makeText(applicationContext,(arr[0].name).toString(),Toast.LENGTH_LONG).show()
+        //Toast.makeText(applicationContext,(arr[0].name).toString(),Toast.LENGTH_LONG).show()
 
-        /*
-        for(c : course in arr){
 
-            for (i in 0..4){
-                if (c.week[i]){
-                    val lecture = TextView(this )
+        for (c: course in arr) {
+
+            for (i in 0..4) {
+                if (c.week[i]) {
+                    val lecture = TextView(this)
                     var stm = String()
                     var edm = String()
-                    if (c.startMin < 10){
+                    if (c.startMin < 10) {
                         stm = "0" + c.startMin
                     }
-                    if(c.endMin<10){
+                    if (c.endMin < 10) {
                         edm = "0" + c.endMin
                     }
                     lecture.text = c.name + "\n" + c.startHour.toString() + ":" +
                             stm + "-" +
-                    c.endHour.toString() + ":" + edm
+                            c.endHour.toString() + ":" + edm
                     lecture.setBackgroundColor((Color.GRAY))
                     arrayOfDays[i].addView(lecture)
                     //test
@@ -246,25 +257,24 @@ class ScheduleActivity : AppCompatActivity() {
                     //p.topMargin = 50
                     //lecture.layoutParams = p
 
-                    val marginToTop = 20 + ((c.startHour - 8)*60 + (c.startMin))/60 * 130
+                    val marginToTop = 20 + ((c.startHour - 8) * 60 + (c.startMin)) / 60 * 130
                     var timeSpanInMin = (c.endHour - c.startHour) * 60 + c.endMin - c.startMin
 
-                    lecture.setMargins(0,marginToTop,0,0)
-                    lecture.height = timeSpanInMin/60 * 130
-                }
-            }
+                    lecture.setMargins(0, marginToTop, 0, 0)
+                    lecture.height = timeSpanInMin / 60 * 130
+                }//if (c.week[i])
 
-         */
 
-       // }
-    }
+            }//for (i in 0..4)
+        }//for(c : course in arr)
+    }//retrieveData()
 
-    fun saveData(){
+            fun saveData() {
 
-        val gson = Gson()
-        val json = gson.toJson(courseList)
-        sharedPreferences.edit().putString("courseList",json).apply()
-    }
+                val gson = Gson()
+                val json = gson.toJson(courseList)
+                sharedPreferences.edit().putString("courseList", json).commit()
+            }//saveData()
 
 
 
