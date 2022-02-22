@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MotivationApp">
         <activity
+            android:name=".editorDeadlineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".addDeadlineActivity"
+            android:exported="false" />
+        <activity
             android:name=".StudyActivity"
             android:exported="false" />
         <activity
