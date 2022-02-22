@@ -178,4 +178,19 @@ class StudyActivity : AppCompatActivity() {
         }//else
     }//startTimer
 
+    override fun onBackPressed() {
+        if(counterActive){
+            countDownTimer.cancel()
+            whiteNoisePlayer.stop()
+            whiteNoisePlayer.prepare()
+        }//if(counterActive)
+
+        if(medActive){
+            meditationTimer.cancel()
+            meditationPlayer.stop()
+            meditationPlayer.prepare()
+        }//if(medActive)
+        super.onBackPressed()
+    }
+
 }//StudyActivity : AppCompatActivity()
