@@ -178,13 +178,30 @@ class ScheduleActivity : AppCompatActivity() {
         sharedPreferences =
             applicationContext.getSharedPreferences("courseSchedule", Context.MODE_PRIVATE)
         val gson = Gson()
-        val json = sharedPreferences.getString("courseList", "")
+        val json = sharedPreferences.getString("courseList","")
         val tptk = object : TypeToken<ArrayList<course>>() {}
-        val arr = gson.fromJson<ArrayList<course>>(json, tptk.type)
+        var arr = ArrayList<course>()
+        if(json != ""){
+            arr = gson.fromJson<ArrayList<course>>(json, tptk.type)
+        }
+        //var arr = ArrayList<course?>()
+
+        /*
+        arr = ObjectSerializer
+            .deserialize(
+                sharedPreferences
+                    .getString("courseList", ObjectSerializer.serialize(java.util.ArrayList<course>()))
+            ) as ArrayList<course?>
+
+         */
+
+
 
         if (arr.isNotEmpty()) {
             courseList = arr
         }//if (arr.isNotEmpty())
+
+        //Toast.makeText(applicationContext,courseList.size.toString(),Toast.LENGTH_LONG).show()
 
 
         /*
@@ -195,6 +212,7 @@ class ScheduleActivity : AppCompatActivity() {
 
          */
         //Toast.makeText(applicationContext,(arr[0].name).toString(),Toast.LENGTH_LONG).show()
+
 
 
         for (c: course in courseList) {
@@ -254,6 +272,8 @@ class ScheduleActivity : AppCompatActivity() {
 
             }//for (i in 0..4)
         }//for(c : course in arr)
+
+
     }//retrieveData()
 
     fun saveData() {
