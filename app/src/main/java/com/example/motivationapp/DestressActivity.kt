@@ -1,5 +1,6 @@
 package com.example.motivationapp
 
+import android.media.MediaPlayer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -12,6 +13,7 @@ import androidx.dynamicanimation.animation.FlingAnimation
 class DestressActivity : AppCompatActivity() {
 
     lateinit var dumpling : ImageView
+//    lateinit var punchPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,12 +26,14 @@ class DestressActivity : AppCompatActivity() {
 
         dumpling.animate().translationYBy(-2000f).rotationBy(720f).setDuration(2000)
 
+//        punchPlayer = MediaPlayer.create(this, R.raw.punch)
+//        punchPlayer.start()
+
         val handler = Handler()
         handler.postDelayed(Runnable {
             dumpling.animate().translationX(0f).translationY(0f)
         }, 1500)
 
-//        dumpling.clearAnimation()
     }//punch
 
 
