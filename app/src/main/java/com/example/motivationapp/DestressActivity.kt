@@ -13,7 +13,7 @@ import androidx.dynamicanimation.animation.FlingAnimation
 class DestressActivity : AppCompatActivity() {
 
     lateinit var dumpling : ImageView
-    lateinit var mediaPlayer: MediaPlayer
+    lateinit var punchPlayer: MediaPlayer
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +24,8 @@ class DestressActivity : AppCompatActivity() {
 
     fun punch (view : View) {
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.punch)
-        mediaPlayer.start()
+        punchPlayer = MediaPlayer.create(this, R.raw.punch)
+        punchPlayer.start()
 
         dumpling.animate().translationYBy(-2000f).rotationBy(720f).setDuration(2000)
 
@@ -33,7 +33,6 @@ class DestressActivity : AppCompatActivity() {
         handler.postDelayed(Runnable {
             dumpling.animate().translationX(0f).translationY(0f)
         }, 1500)
-
 
     }//punch
 
